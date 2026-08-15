@@ -8,7 +8,6 @@ export const siteConfig = {
   expertPhotoProfile: "/wellington-apresentacao.png",
   logoUrl: "",
   dashboardImage: "",
-  selectedAngle: 3,
   canonicalUrl: "",
   tracking: {
     metaPixelId: "",
@@ -18,19 +17,9 @@ export const siteConfig = {
 
 export const heroAngles = {
   1: {
-    headline: "Sua empresa fatura. Mas o dinheiro some — existe um jeito de enxergar onde ele está vazando.",
+    headline: "Sua empresa fatura. Mas o dinheiro some. Existe um jeito de enxergar onde ele está vazando.",
     subheadline: "Você já tentou sistema, planilha e força de vontade. O erro invisível foi tentar organizar tudo sozinho, sem diagnóstico. Em 2h30, descubra o primeiro furo e sinta clareza de novo.",
     cta: "GARANTIR MINHA VAGA POR R$29,90",
-  },
-  2: {
-    headline: "Você vai sair com um diagnóstico da sua empresa — sem planilha confusa, sem palestra genérica e sem precisar entender ERP.",
-    subheadline: "Em 2h30, você responde ao quiz, calcula sua hemorragia em R$ e descobre qual furo tampar primeiro — pronto para agir na próxima segunda-feira.",
-    cta: "QUERO MEU DIAGNÓSTICO POR R$29,90",
-  },
-  3: {
-    headline: "O sistema que você abandonou não provou que você falhou — provou que te venderam o caminho errado.",
-    subheadline: "Em 2h30, você vai ver por que login, videoaula e chatbot não organizam empresa pequena — e como os 4 Furos do Balde revelam onde o caos começa.",
-    cta: "DESCOBRIR O CAMINHO CERTO",
   },
 } as const;
 

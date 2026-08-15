@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   bonuses,
   discoveries,
@@ -15,8 +15,6 @@ import {
   siteConfig,
   timeline,
 } from "./content";
-
-type Angle = 1 | 2 | 3;
 
 declare global {
   interface Window {
@@ -98,11 +96,10 @@ function DiagnosticPanel() {
 }
 
 export function LandingPage() {
-  const [angle, setAngle] = useState<Angle>(siteConfig.selectedAngle as Angle);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [mobileCta, setMobileCta] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
-  const hero = useMemo(() => heroAngles[angle], [angle]);
+  const hero = heroAngles[1];
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -119,9 +116,7 @@ export function LandingPage() {
   };
 
   useEffect(() => {
-    const value = Number(new URLSearchParams(window.location.search).get("angulo"));
-    if (value === 1 || value === 2 || value === 3) setAngle(value);
-    track("page_view", { angle: value === 1 || value === 2 || value === 3 ? value : 3 });
+    track("page_view", { angle: 1 });
 
     const depths = new Set<number>();
     const onScroll = () => {
@@ -144,7 +139,7 @@ export function LandingPage() {
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
       <header className="site-header">
-        <a className="brand" href="#inicio" aria-label="MaisControl — início">
+        <a className="brand" href="#inicio" aria-label="MaisControl, página inicial">
           <span className="brand-symbol" aria-hidden="true">M+</span>
           <span><strong>MaisControl</strong><small>gestão que começa pelo diagnóstico</small></span>
         </a>
@@ -177,9 +172,6 @@ export function LandingPage() {
             <div className="photo-tag"><strong>Wellington Camaleão</strong><span>Empresário · criador do MaisControl</span></div>
           </div>
         </div>
-        <div className="angle-switcher" aria-label="Variações da mensagem principal">
-          <span>Ângulo do anúncio</span>{([1, 2, 3] as Angle[]).map((item) => <a key={item} className={angle === item ? "active" : ""} href={`?angulo=${item}`} aria-label={`Ver ângulo ${item}`}>{item}</a>)}
-        </div>
       </section>
 
       <section className="trust-strip" aria-label="Resumo da aula"><div className="container">
@@ -206,7 +198,7 @@ export function LandingPage() {
       <section className="section mechanism" id="metodo">
         <div className="container">
           <Eyebrow light>DIAGNÓSTICO DOS 4 FUROS DO BALDE</Eyebrow>
-          <div className="heading-split light"><h2>Vender mais não resolve um balde que <em>continua furado.</em></h2><p>Sua empresa coloca dinheiro para dentro todos os dias. O diagnóstico mostra onde parte dele pode estar escapando — e onde olhar primeiro.</p></div>
+          <div className="heading-split light"><h2>Vender mais não resolve um balde que <em>continua furado.</em></h2><p>Sua empresa coloca dinheiro para dentro todos os dias. O diagnóstico mostra onde parte dele pode estar escapando e onde olhar primeiro.</p></div>
           <div className="leak-grid">{leaks.map((leak) => <article key={leak.title} className={leak.title === "Caixa" ? "priority" : ""}><div className="leak-top"><span>{leak.icon}</span><small>{leak.key}</small></div><h3>{leak.title}</h3><p>{leak.text}</p><div className="status"><i /> {leak.status}</div></article>)}</div>
           <div className="flow"><span>Diagnóstico</span><b>→</b><span>Clareza</span><b>→</b><span>Prioridade</span><b>→</b><span>Implantação</span></div>
         </div>
@@ -271,7 +263,7 @@ export function LandingPage() {
 
       <section className="section comparison"><div className="container"><Eyebrow light>O DIFERENCIAL</Eyebrow><div className="heading-split light"><h2>A maioria começa vendendo sistema. <em>O MaisControl começa mostrando o problema.</em></h2><p>Você não começa trocando tudo. Começa descobrindo o que precisa mudar primeiro.</p></div><div className="comparison-grid"><article><small>CAMINHO COMUM</small>{["Compra um sistema", "Recebe um login", "Tenta configurar sozinho", "Mantém a planilha paralela", "A equipe não adere", "Abandona"].map((item) => <p key={item}><span>×</span>{item}</p>)}</article><article className="mc-path"><small>CAMINHO MAISCONTROL</small>{["Diagnóstico", "Clareza", "Maior furo", "Ordem de prioridade", "Decisão consciente", "Implantação acompanhada, se fizer sentido"].map((item) => <p key={item}><span>✓</span>{item}</p>)}</article></div></div></section>
 
-      <section className="section offer" id="checkout"><div className="container offer-layout"><div className="offer-copy"><Eyebrow light>A PRÓXIMA TURMA AO VIVO</Eyebrow><h2>Por R$29,90, você compra clareza antes de investir em <em>qualquer implantação.</em></h2><p>Como Ter Controle Total da Sua Empresa em 7 Dias — descubra onde o dinheiro está vazando e tampe os furos antes que o balde esvazie.</p><div className="offer-list">{offerItems.map((item) => <span key={item}><i>✓</i>{item}</span>)}</div></div><article className="price-card"><p className="availability"><i /> Próxima turma ao vivo</p><small>INVESTIMENTO ÚNICO</small><div className="big-price"><span>R$</span><strong>29</strong><b>,90</b></div><p className="date-note">{siteConfig.eventTime}.</p><CTA source="offer">GARANTIR MINHA VAGA POR R$29,90</CTA><p className="secure-line dark"><span>✓</span> Aula ao vivo <i /> Compra segura <i /> Garantia de 7 dias</p><div className="checkout-placeholder"><span>Checkout será conectado aqui</span><small>Todos os botões já usam a mesma configuração.</small></div></article></div></section>
+      <section className="section offer" id="checkout"><div className="container offer-layout"><div className="offer-copy"><Eyebrow light>A PRÓXIMA TURMA AO VIVO</Eyebrow><h2>Por R$29,90, você compra clareza antes de investir em <em>qualquer implantação.</em></h2><p>Como Ter Controle Total da Sua Empresa em 7 Dias. Descubra onde o dinheiro está vazando e tampe os furos antes que o balde esvazie.</p><div className="offer-list">{offerItems.map((item) => <span key={item}><i>✓</i>{item}</span>)}</div></div><article className="price-card"><p className="availability"><i /> Próxima turma ao vivo</p><small>INVESTIMENTO ÚNICO</small><div className="big-price"><span>R$</span><strong>29</strong><b>,90</b></div><p className="date-note">{siteConfig.eventTime}.</p><CTA source="offer">GARANTIR MINHA VAGA POR R$29,90</CTA><p className="secure-line dark"><span>✓</span> Aula ao vivo <i /> Compra segura <i /> Garantia de 7 dias</p><div className="checkout-placeholder"><span>Checkout será conectado aqui</span><small>Todos os botões já usam a mesma configuração.</small></div></article></div></section>
 
       <section className="section guarantee"><div className="container guarantee-layout"><div className="guarantee-badge"><span>7</span><strong>DIAS</strong><small>GARANTIA<br />INCONDICIONAL</small></div><div><Eyebrow>DECIDA COM TRANQUILIDADE</Eyebrow><h2>Você tem 7 dias para ver se <em>a entrega faz sentido.</em></h2><p>Assista à aula. Conheça o diagnóstico. Se entender que não foi para você, solicite o reembolso dentro de 7 dias e receba de volta o valor pago.</p><strong>Sem pegadinha. Sem precisar provar nada.</strong></div></div></section>
 

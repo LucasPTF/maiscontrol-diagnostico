@@ -18,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
       type: "website",
       locale: "pt_BR",
       url: origin,
-      images: [{ url: socialImage, width: 1200, height: 630, alt: "Diagnóstico dos 4 Furos do Balde — aula ao vivo MaisControl" }],
+      images: [{ url: socialImage, width: 1200, height: 630, alt: "Diagnóstico dos 4 Furos do Balde, aula ao vivo MaisControl" }],
     },
     twitter: {
       card: "summary_large_image",
