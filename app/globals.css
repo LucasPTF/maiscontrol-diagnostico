@@ -74,6 +74,7 @@ h2 em { color: var(--blue); font-style: normal; }
 .secure-line i { width: 3px; height: 3px; background: rgba(255,255,255,.27); border-radius: 50%; }
 .hero-media { position: relative; width: min(100%, 440px); justify-self: end; }
 .hero-photo-shell { position: relative; height: 620px; overflow: hidden; background: var(--slate); border: 1px solid rgba(255,255,255,.14); border-radius: 220px 220px 18px 18px; box-shadow: 0 45px 100px -45px #000; }
+.hero-photo-shell > img { object-position: center 34%; }
 .photo-placeholder { position: relative; width: 100%; height: 100%; overflow: hidden; background: radial-gradient(circle at 55% 30%, rgba(37,99,235,.27), transparent 31%), linear-gradient(145deg, #14243a, #09131f); }
 .photo-placeholder.profile { background: radial-gradient(circle at 40% 28%, rgba(20,184,166,.18), transparent 32%), linear-gradient(145deg, #1a2c44, #0c1725); }
 .photo-grid { position: absolute; inset: 0; opacity: .2; background-image: linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px); background-size: 30px 30px; mask-image: linear-gradient(to bottom, black, transparent 70%); }
@@ -208,6 +209,7 @@ h2 em { color: var(--blue); font-style: normal; }
 .mentor { background: #eef3f8; }
 .mentor-layout { display: grid; grid-template-columns: .78fr 1.22fr; align-items: center; gap: 92px; }
 .profile-photo { position: relative; height: 720px; overflow: hidden; background: var(--slate); border-radius: 210px 210px 16px 16px; box-shadow: var(--shadow); }
+.profile-photo > img { object-position: center 34%; }
 .profile-photo::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(transparent 68%, rgba(7,17,31,.65)); }
 .profile-seal { position: absolute; z-index: 3; right: 22px; bottom: 22px; width: 145px; padding: 18px; color: var(--white); background: rgba(15,28,46,.94); border: 1px solid rgba(255,255,255,.15); border-radius: 10px; }
 .profile-seal strong, .profile-seal span { display: block; }

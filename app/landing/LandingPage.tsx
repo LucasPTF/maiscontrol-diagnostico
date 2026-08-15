@@ -60,7 +60,14 @@ function CTA({ children, source, small = false }: { children: React.ReactNode; s
 function PhotoPlaceholder({ kind }: { kind: "hero" | "profile" }) {
   const configuredPhoto = kind === "hero" ? siteConfig.expertPhotoHero : siteConfig.expertPhotoProfile;
   if (configuredPhoto) {
-    return <img src={configuredPhoto} alt={kind === "hero" ? "Wellington Camaleão na abertura da aula" : "Wellington Camaleão, empresário e criador do MaisControl"} />;
+    return (
+      <img
+        src={configuredPhoto}
+        alt={kind === "hero" ? "Wellington Camaleão na abertura da aula" : "Wellington Camaleão, empresário e criador do MaisControl"}
+        loading={kind === "hero" ? "eager" : "lazy"}
+        fetchPriority={kind === "hero" ? "high" : "auto"}
+      />
+    );
   }
   return (
     <div className={`photo-placeholder ${kind}`} role="img" aria-label="Espaço reservado para foto real de Wellington Camaleão">
